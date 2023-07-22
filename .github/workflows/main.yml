@@ -1,0 +1,21 @@
+name: Run Python Script
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: cmd /c test.bat
+
+    - name: Run Python script
+      env:
+        EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
+        PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
+      run: python test.py $Env:EMAIL_SECRET $Env:PASSWORD_SECRET

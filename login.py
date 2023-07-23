@@ -40,7 +40,7 @@ for pos, text in actions:
         time.sleep(10)
 
 # Execute the "taskkill" command to close Microsoft Edge
-subprocess.run(["taskkill", "/f", "/im", "msedge.exe"])
+subprocess.run(["taskkill", "/f", "/im", "msedge.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 # ASCII art and echo messages
 print("\n..........................................................")

@@ -1,5 +1,4 @@
 import pyautogui
-import subprocess
 import time
 import os
 
@@ -25,17 +24,6 @@ actions = [
     ((518, 435), None)  # log in
 ]
 
-# Function to perform the taskkill operation with retries
-def taskkill_process(process_name, max_retries=5, retry_delay=5):
-    for _ in range(max_retries):
-        try:
-            subprocess.run(["taskkill", "/f", "/im", process_name])
-            return True  # Return True if the taskkill is successful
-        except subprocess.CalledProcessError:
-            print(f"Failed to kill {process_name}. Retrying in {retry_delay} seconds.")
-            time.sleep(retry_delay)
-    return False  # Return False if the taskkill failed even after the maximum retries
-
 # Wait for a few seconds to give time to focus on the target application
 time.sleep(5)
 
@@ -45,6 +33,10 @@ for pos, text in actions:
     if text is not None:
         pyautogui.typewrite(text)
     time.sleep(duration)  # Wait for the specified duration before proceeding to the next action
+
+    # Check if the current action is to add a 10-second delay after coordinate (506, 499)
+    if pos == (506, 499):
+        time.sleep(10)
 
 # Additional actions here if needed
 print("Done")

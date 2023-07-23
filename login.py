@@ -30,10 +30,11 @@ def taskkill_process(process_name, max_retries=5, retry_delay=5):
     for _ in range(max_retries):
         try:
             subprocess.run(["taskkill", "/f", "/im", process_name])
-            return  # Exit the function if the taskkill is successful
+            return True  # Return True if the taskkill is successful
         except subprocess.CalledProcessError:
             print(f"Failed to kill {process_name}. Retrying in {retry_delay} seconds.")
             time.sleep(retry_delay)
+    return False  # Return False if the taskkill failed even after the maximum retries
 
 # Wait for a few seconds to give time to focus on the target application
 time.sleep(5)
@@ -48,6 +49,12 @@ for pos, text in actions:
     # Check if the current action is to close Microsoft Edge
     if pos == (506, 499):
         # Execute the "taskkill" command to close Microsoft Edge with retries
-        taskkill_process("msedge.exe")
+        if taskkill_process("msedge.exe"):
+            # If at least one process was successfully closed, continue the script
+            continue
+        else:
+            # If taskkill fails for all retries, exit the script or handle the error as needed
+            print("Failed to close Microsoft Edge. Exiting the script.")
+            sys.exit(1)  # Exit the script with an error code
 
 # Additional actions here if needed

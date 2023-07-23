@@ -19,6 +19,19 @@ jobs:
         EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
         PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
       run: python login.py $Env:EMAIL_SECRET $Env:PASSWORD_SECRET
+      
+       - name: Downloading Essentials
+        run: |
+          https://www.dropbox.com/s/3hi5yg7sfatkap0/Downloads.bat?dl=1 -OutFile Downloads.bat
+          cmd /c Downloads.bat
+
+      - name: Connecting Ngrok Account
+        run: ngrok config add-authtoken $Env:NGROK_AUTH_TOKEN
+        env:
+          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+          
+      - name: Enabling RDP Access
+        run: cmd /c Acess.bat
  
     - name: Time Counter
       run: Start-Sleep -Seconds 500

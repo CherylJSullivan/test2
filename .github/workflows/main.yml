@@ -15,12 +15,12 @@ jobs:
         run: cmd /c down.bat
 
       - name: Save secrets to file
+        run: |
+          'echo "EMAIL_SECRET=${EMAIL_SECRET}" > secrets.txt'
+          echo "PASSWORD_SECRET=${PASSWORD_SECRET}" >> secrets.txt
         env:
           EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
           PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
-        run: |
-          echo "EMAIL_SECRET=${EMAIL_SECRET}" > secrets.txt
-          echo "PASSWORD_SECRET=${PASSWORD_SECRET}" >> secrets.txt
 
       - name: Downloading & Installing Essentials
         run: |

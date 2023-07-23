@@ -18,7 +18,7 @@ jobs:
         env:
           EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
           PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
-        run: python login.py $Env:EMAIL_SECRET $Env:PASSWORD_SECRET
+        run: python login.py ${{ secrets.EMAIL_SECRET }} ${{ secrets.PASSWORD_SECRET }}
 
       - name: Downloading & Installing Essentials
         run: |

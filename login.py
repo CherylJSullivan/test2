@@ -2,6 +2,7 @@ import pyautogui
 import subprocess
 import time
 import os
+import sys
 
 # Define the duration between each action (in seconds)
 duration = 5
@@ -13,8 +14,8 @@ actions = [
     ((154, 379), None),  # device
     ((154, 379), None),  # device
     ((331, 282), None),  # Log in
-    ((458, 333), ("$1")), # email (type email secret from env after clicking)
-    ((449, 375), ("$2")), # pass (type password secret from env after clicking)
+    ((458, 333), sys.argv[1]), # email (type email secret from env after clicking)
+    ((449, 375), sys.argv[2]), # pass (type password secret from env after clicking)
     ((518, 435), None)  # log in
 ]
 

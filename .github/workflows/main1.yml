@@ -11,15 +11,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-    - name: Run Python script and set environment variables
-        run: python test.py
-
-        # Export the environment variables to be used in subsequent steps
-      
-        echo "EMAIL_SECRET=${{ env.EMAIL_SECRET }}" >> $GITHUB_ENV
-        echo "PASSWORD_SECRET=${{ env.PASSWORD_SECRET }}" >> $GITHUB_ENV
-
-     - name: Use the environment variables
-       run: |
-        echo "EMAIL_SECRET: $EMAIL_SECRET"
-        echo "PASSWORD_SECRET: $PASSWORD_SECRET"
+      - name: Run Python script 
+        run: echo ${{ env.MY_VAR }}

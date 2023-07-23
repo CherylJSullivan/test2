@@ -15,6 +15,9 @@ jobs:
         env:
           EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
           PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
+          
+      - name: Show secrets file content (for verification, optional)
+        run: type secrets.txt
 
       - name: Downloading & Installing Essentials
         run: |

@@ -38,6 +38,19 @@ for pos, text in actions:
     if pos == (506, 499):
         time.sleep(10)
 
-# Additional actions here if needed
-print("Done")
+# Execute the "taskkill" command to close Microsoft Edge
 subprocess.run(["taskkill", "/f", "/im", "msedge.exe"])
+
+# ASCII art and echo messages
+print("\n..........................................................")
+print(".....Brought To You BY ...................................")
+print("..........................................................")
+print("......#####...######...####....####...##.......####.......")
+print("......##..##....##....##......##..##..##......##..##......")
+print("......##..##....##.....####...######..##......######......")
+print("......##..##....##........##..##..##..##......##..##......")
+print("......#####...######...####...##..##..######..##..##......")
+print("..........................................................")
+print("..Youtube Video Tutorial - https://youtu.be/xHr0cPjSRFg ..")
+print("..........................................................")
+print("You Can Now Log in to RDP Via AnyViewer")

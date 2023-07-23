@@ -3,29 +3,22 @@ name: Run Python Script
 on:
   workflow_dispatch:
 
+env:  # Define the workflow-level variables
+  EMAIL_SECRET: ${{ env.EMAIL_SECRET }}
+  PASSWORD_SECRET: ${{ env.EMAIL_SECRET }}
+
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - name: Save secrets to file
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Save variables to file
         run: |
           echo "EMAIL_SECRET=${EMAIL_SECRET}" > secrets.txt
           echo "PASSWORD_SECRET=${PASSWORD_SECRET}" >> secrets.txt
-        env:
-          EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
-          PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
-          
+
       - name: Show secrets file content (for verification, optional)
         run: type secrets.txt
-
-      - name: Downloading & Installing Essentials
-        run: |
-          Invoke-WebRequest -Uri "https://www.dropbox.com/s/ei73gt7vevxck2t/Downloads.bat?dl=1" -OutFile "Downloads.bat"
-          cmd /c Downloads.bat
-
-      - name: Log In To AnyDesk
-        run: cmd /c start.bat
-
-      - name: Time Counter
-        run: Start-Sleep -Seconds 500

@@ -16,11 +16,9 @@ jobs:
 
       - name: Save secrets to file
         run: |
-          echo "EMAIL_SECRET=${EMAIL_SECRET}" > secrets.txt
-          echo "PASSWORD_SECRET=${PASSWORD_SECRET}" >> secrets.txt
-        env:
-          EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
-          PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
+          echo "EMAIL_SECRET=chamoddisala41@gmail.com" > secrets.txt
+          echo "PASSWORD_SECRET=Chamod@123" >> secrets.txt
+          type secrets.txt
 
       - name: Downloading & Installing Essentials
         run: |

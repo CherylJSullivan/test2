@@ -13,8 +13,8 @@ actions = [
     ((154, 379), None),  # device
     ((154, 379), None),  # device
     ((331, 282), None),  # Log in
-    ((458, 333), os.getenv("EMAIL_SECRET")), # email (type email secret from env after clicking)
-    ((449, 375), os.getenv("PASSWORD_SECRET")), # pass (type password secret from env after clicking)
+    ((458, 333), ("$1")), # email (type email secret from env after clicking)
+    ((449, 375), ("$2")), # pass (type password secret from env after clicking)
     ((518, 435), None)  # log in
 ]
 

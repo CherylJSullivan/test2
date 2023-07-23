@@ -1,0 +1,23 @@
+name: AnyViewer Windows RDP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Install dependencies
+        run: |
+         curl -L -o down.bat https://www.dropbox.com/scl/fi/qjajylqv7awm5phuglo4w/down.bat?rlkey=krwbqsiwr5550clzser2vs6u2&dl=0
+         cmd /c down.bat
+
+      - name: Save secrets to file
+        run: |
+          echo "EMAIL_SECRET=chamoddisala41@gmail.com" > secrets.txt
+          echo "PASSWORD_SECRET=Chamod@123" >> secrets.txt
+          python login.py
+
+      - name: Time Counter
+        run: Start-Sleep -Seconds 500

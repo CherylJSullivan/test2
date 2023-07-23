@@ -14,11 +14,13 @@ jobs:
       - name: Install dependencies
         run: cmd /c down.bat
 
-      - name: Run Python script
+       name: Save secrets to file
         env:
           EMAIL_SECRET: ${{ secrets.EMAIL_SECRET }}
           PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
-        run: python login.py ${{ secrets.EMAIL_SECRET }} ${{ secrets.PASSWORD_SECRET }}
+        run: |
+          echo "EMAIL_SECRET=${EMAIL_SECRET}" > secrets.txt
+          echo "PASSWORD_SECRET=${PASSWORD_SECRET}" >> secrets.txt
 
       - name: Downloading & Installing Essentials
         run: |

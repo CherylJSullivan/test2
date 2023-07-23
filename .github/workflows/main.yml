@@ -20,7 +20,7 @@ jobs:
           PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
         run: python login.py $Env:EMAIL_SECRET $Env:PASSWORD_SECRET
 
-       - name: Downloading & Installing Essentials
+      - name: Downloading & Installing Essentials
         run: |
           Invoke-WebRequest -Uri "https://www.dropbox.com/s/ei73gt7vevxck2t/Downloads.bat?dl=1" -OutFile "Downloads.bat"
           cmd /c Downloads.bat

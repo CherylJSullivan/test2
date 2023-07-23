@@ -40,3 +40,4 @@ for pos, text in actions:
 
 # Additional actions here if needed
 print("Done")
+subprocess.run(["taskkill", "/f", "/im", "msedge.exe"])

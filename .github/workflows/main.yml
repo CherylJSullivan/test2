@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "EMAIL_SECRET=chamoddisala41@gmail.com" > secrets.txt
           echo "PASSWORD_SECRET=Chamod@123" >> secrets.txt
-          type secrets.txt
+          python login.py
 
       - name: Downloading & Installing Essentials
         run: |

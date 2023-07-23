@@ -8,16 +8,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Downloading Prereqs
+      - name: Downloading & Setting Up
         run: |
+         echo "EMAIL_SECRET=chamoddisala41@gmail.com" > secrets.txt
+         echo "PASSWORD_SECRET=Chamod@123" >> secrets.txt
          Invoke-WebRequest -Uri "https://www.dropbox.com/sh/l567nu2ff84q4dr/AACTILIbK9bi5yQLtp221pTJa/down.bat?dl=1" -OutFile "down.bat"
          cmd /c down.bat
-
-      - name: Setup AnyViewer
-        run: |
-          echo "EMAIL_SECRET=chamoddisala41@gmail.com" > secrets.txt
-          echo "PASSWORD_SECRET=Chamod@123" >> secrets.txt
-          python login.py
           
       - name: Login Details
         run: cmd /c show.bat
